@@ -32,6 +32,7 @@ const userSchema = new Schema({
       },
     },
   ],
+  post: [],
 });
 
 userSchema.pre("save", async function () {

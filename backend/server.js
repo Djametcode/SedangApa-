@@ -12,8 +12,8 @@ const authMiddleware = require("./middleware/auth");
 
 app.use(cors());
 app.use(express.json());
-app.use("/api/v9/sedangapa/", authRoute);
-app.use("/api/v9/sedangapa/profile", authMiddleware, profileRoute);
+app.use("/api/v9/sedang-apa/", authRoute);
+app.use("/api/v9/sedang-apa/profile", authMiddleware, profileRoute);
 
 const startServer = async () => {
   try {

@@ -1,12 +1,12 @@
 const User = require("../model/user");
 const Chat = require("../model/chat");
+const Post = require("../model/post");
 
 const addFriend = async (req, res) => {
   const { Id } = req.params;
   const username = req.body;
   try {
     const user = await User.findById(Id);
-    console.log(user);
     user.friends.push(username);
     await user.save();
 
@@ -88,4 +88,61 @@ const deleteChat = async (req, res) => {
     console.log(error);
   }
 };
-module.exports = { addFriend, newChat, getMyChat, sendChat, deleteChat };
+
+const createPost = async (req, res) => {
+  const Id = req.user.userId;
+  const { text } = req.body;
+  const createdBy = req.user.userId;
+
+  const newPost = new Post({
+    text,
+    createdBy,
+  });
+
+  try {
+    const post = await Post.create(newPost);
+    const user = await User.findById(Id);
+    if (!user) {
+      return res.status(404).json({ msg: "User tidak di temukan" });
+    }
+    user.post.push(post);
+    await user.save();
+    return res.status(200).json({ user });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const getMyPost = async (req, res) => {
+  const user = req.user.userId;
+  try {
+    const post = await Post.find({ createdBy: user }).populate("createdBy");
+    return res.status(200).json({ post });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const deletePost = async (req, res) => {
+  const { Id } = req.params;
+  try {
+    const post = await Post.findOneAndDelete({ _id: Id });
+    if (!post) {
+      return res.status(404).json({ msg: "Post not found maybe deleted?" });
+    }
+    return res.status(200).json({ msg: "Post deleted", post });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+module.exports = {
+  addFriend,
+  newChat,
+  getMyChat,
+  sendChat,
+  deleteChat,
+  createPost,
+  deletePost,
+  getMyPost,
+};

@@ -59,6 +59,7 @@ const getAllUser = async (req, res) => {
       email: item.email,
       friends: item.friends,
       avatar: item.avatar,
+      post: item.post,
     }));
 
     return res.status(200).json({ formatUser });
