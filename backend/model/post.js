@@ -6,6 +6,10 @@ const postSchema = new Schema({
     type: String,
     default: "",
   },
+  image: {
+    type: String,
+    default: "",
+  },
   createdBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",

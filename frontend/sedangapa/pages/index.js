@@ -1,10 +1,16 @@
 import axios from "axios";
 import Link from "next/link";
-import { useState } from "react";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const route = useRouter();
+  const [warning, setWarning] = useState();
+  const [id, setId] = useState();
+  const [token, setToken] = useState();
+  const [text, toggleText] = useState(false);
 
   const loginData = {
     email: email,
@@ -13,13 +19,20 @@ export default function Home() {
   console.log(loginData);
 
   const handleLogin = async () => {
+    event.preventDefault();
     try {
       const response = await axios.post(
         "http://localhost:3000/api/v9/sedang-apa/login",
         loginData
       );
       const result = await response.data;
-      console.log(result);
+      const { msg, user, token } = result;
+      console.log(user);
+      await localStorage.setItem("id", user._id);
+      await localStorage.setItem("token", token);
+      await setWarning(msg);
+      await toggleText(true);
+      route.push("/landing");
     } catch (error) {
       console.log(error);
     }
@@ -46,6 +59,13 @@ export default function Home() {
             className=" p-2 rounded-xl focus:outline-none"
             onChange={(e) => setPassword(e.target.value)}
           />
+          <div>
+            {text && (
+              <p className=" text-center text-sm text-green-500">
+                Berhasil login !
+              </p>
+            )}
+          </div>
           <div className=" flex justify-center">
             <button
               onClick={handleLogin}

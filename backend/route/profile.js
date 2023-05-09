@@ -9,6 +9,7 @@ const {
   createPost,
   deletePost,
   getMyPost,
+  getUserById,
 } = require("../controller/profile");
 
 route.post("/add-friend/:Id", addFriend);
@@ -19,5 +20,7 @@ route.delete("/delete-chat/:Id", deleteChat);
 route.post("/create-post/", createPost);
 route.delete("/delete-post/:Id", deletePost);
 route.get("/get-my-post", getMyPost);
+route.get("/get-user/:Id", getUserById);
+route.post("create-post/");
 
 module.exports = route;
