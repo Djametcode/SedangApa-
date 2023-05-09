@@ -42,7 +42,7 @@ export default function RegistPage() {
               placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
             />
-            <div className=" flex justify-center">
+            <div className=" flex focus: justify-center">
               <button className=" bg-slate-300 p-2 rounded-lg">create</button>
             </div>
           </form>
