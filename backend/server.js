@@ -18,7 +18,7 @@ app.use("/api/v9/sedang-apa/profile", authMiddleware, profileRoute);
 const startServer = async () => {
   try {
     await connectDB(process.env.MONGO_URL);
-    app.listen(port, console.log(`Server running ...`));
+    app.listen(port, console.log(`Server running ... `));
   } catch (error) {
     console.log(error);
   }
