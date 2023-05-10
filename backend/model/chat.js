@@ -9,8 +9,7 @@ const chatSchema = new Schema({
         ref: "User",
       },
       username2: {
-        type: String,
-        default: "",
+        type: Object,
       },
     },
   ],

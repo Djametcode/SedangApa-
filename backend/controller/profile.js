@@ -17,23 +17,26 @@ const addFriend = async (req, res) => {
 };
 
 const newChat = async (req, res) => {
-  const { username2 } = req.body;
-  const participants = [
-    {
-      username1: req.user.userId,
-      username2: username2,
-    },
-  ];
-  const createdBy = req.user.userId;
-  const message = [];
-  const newChat = new Chat({
-    participants,
-    createdBy,
-    message,
-  });
-
   try {
-    await participants.push(createdBy);
+    const { username2 } = req.body;
+    const userValue = await User.findOne({ _id: username2 });
+    const newItem = {
+      username: userValue.username,
+      avatar: userValue.avatar,
+    };
+    const participants = [
+      {
+        username1: req.user.userId,
+        username2: newItem,
+      },
+    ];
+    const createdBy = req.user.userId;
+    const message = [];
+    const newChat = new Chat({
+      participants,
+      createdBy,
+      message,
+    });
     const savedChat = await newChat.save();
     return res.status(200).json({ msg: "Berhasil memulai chat", savedChat });
   } catch (error) {
@@ -74,6 +77,16 @@ const sendChat = async (req, res) => {
     await chat.save();
 
     return res.status(200).json({ msg: "Berhasil chatting", chat });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const getChatById = async (req, res) => {
+  try {
+    const { Id } = req.params;
+    const chat = await Chat.findOne({ _id: Id });
+    return res.status(200).json({ chat });
   } catch (error) {
     console.log(error);
   }
@@ -156,4 +169,5 @@ module.exports = {
   deletePost,
   getMyPost,
   getUserById,
+  getChatById,
 };

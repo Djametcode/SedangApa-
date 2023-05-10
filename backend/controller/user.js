@@ -56,7 +56,7 @@ const getAllUser = async (req, res) => {
     const user = await User.find({});
     const formatUser = user.map((item) => ({
       id: item._id,
-      username: item.user,
+      username: item.username,
       email: item.email,
       friends: item.friends,
       avatar: item.avatar,

@@ -2,7 +2,7 @@ const Post = require("../model/post");
 
 const getAllPost = async (req, res) => {
   try {
-    const post = await Post.find({});
+    const post = await Post.find({}).populate("createdBy");
     return res.status(200).json({ post });
   } catch (error) {
     console.log(error);

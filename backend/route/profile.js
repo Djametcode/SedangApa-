@@ -10,6 +10,7 @@ const {
   deletePost,
   getMyPost,
   getUserById,
+  getChatById,
 } = require("../controller/profile");
 
 route.post("/add-friend/:Id", addFriend);
@@ -22,5 +23,6 @@ route.delete("/delete-post/:Id", deletePost);
 route.get("/get-my-post", getMyPost);
 route.get("/get-user/:Id", getUserById);
 route.post("create-post/");
+route.get("/chat/:Id", getChatById);
 
 module.exports = route;

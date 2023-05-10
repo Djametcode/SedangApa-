@@ -2,6 +2,7 @@ import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
 
 export default function Home() {
   const [email, setEmail] = useState();
@@ -28,8 +29,8 @@ export default function Home() {
       const result = await response.data;
       const { msg, user, token } = result;
       console.log(user);
-      await localStorage.setItem("id", user._id);
-      await localStorage.setItem("token", token);
+      await Cookies.set("id", user._id);
+      await Cookies.set("token", token);
       await setWarning(msg);
       await toggleText(true);
       route.push("/landing");
@@ -48,7 +49,7 @@ export default function Home() {
             <h1>Login</h1>
           </div>
           <input
-            className=" p-2 rounded-xl focus:outline-none"
+            className=" text-sm p-2 rounded-xl focus:outline-none"
             type="text"
             placeholder="Email"
             onChange={(e) => setEmail(e.target.value)}
@@ -56,7 +57,7 @@ export default function Home() {
           <input
             type="password"
             placeholder="Password"
-            className=" p-2 rounded-xl focus:outline-none"
+            className=" text-sm p-2 rounded-xl focus:outline-none"
             onChange={(e) => setPassword(e.target.value)}
           />
           <div>

@@ -49,11 +49,11 @@ export default function Regist() {
           <input
             type="text"
             placeholder="Username"
-            className=" p-2 rounded-xl focus:outline-none"
+            className=" text-sm p-2 rounded-xl focus:outline-none"
             onChange={(e) => setUsername(e.target.value)}
           />
           <input
-            className=" p-2 rounded-xl focus:outline-none"
+            className=" text-sm p-2 rounded-xl focus:outline-none"
             type="text"
             placeholder="Email"
             onChange={(e) => setEmail(e.target.value)}
@@ -61,7 +61,7 @@ export default function Regist() {
           <input
             type="password"
             placeholder="Password"
-            className=" p-2 rounded-xl focus:outline-none"
+            className=" text-sm p-2 rounded-xl focus:outline-none"
             onChange={(e) => setPassword(e.target.value)}
           />
           <div className=" flex justify-center">
@@ -76,6 +76,10 @@ export default function Regist() {
             {text && <p>{warning}</p>}
           </div>
         </form>
+      </div>
+      <div className=" absolute bottom-5 flex justify-center w-screen gap-3 text-sm">
+        <p>&copy; copyright 2023</p>
+        <p>Djamet Coder</p>
       </div>
     </div>
   );
