@@ -85,7 +85,7 @@ const sendChat = async (req, res) => {
 const getChatById = async (req, res) => {
   try {
     const { Id } = req.params;
-    const chat = await Chat.findOne({ _id: Id });
+    const chat = await Chat.findOne({ _id: Id }).populate("message.sender");
     return res.status(200).json({ chat });
   } catch (error) {
     console.log(error);
