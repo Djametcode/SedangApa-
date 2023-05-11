@@ -33,6 +33,7 @@ export default function Layout({ children }) {
     Cookies.remove("token");
     Cookies.remove("id");
     Cookies.remove("chatId");
+    Cookies.remove("username");
     router.push("/");
   };
   const [nav, toggleNav] = useState(false);
@@ -174,7 +175,7 @@ export default function Layout({ children }) {
                     <Link href="/">Pengaturan</Link>
                   </div>
                 </div>
-                {/* <div className=" flex absolute bottom-40 flex-col bg-slate-300 rounded-xl justify-center p-3 w-44 h-16">
+                <div className=" flex absolute bottom-40 flex-col bg-slate-300 rounded-xl justify-center p-3 w-44 h-16">
                   <div className=" flex justify-start gap-1">
                     <div className=" flex flex-col justify-center">
                       <svg
@@ -204,7 +205,7 @@ export default function Layout({ children }) {
                       </div>
                     </div>
                   </div>
-                </div> */}
+                </div>
               </div>
             </div>
           </div>

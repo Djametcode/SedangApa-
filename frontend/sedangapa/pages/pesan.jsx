@@ -10,7 +10,6 @@ export default function Pesan() {
   const route = useRouter();
   const [userId, setUserId] = useState();
   const token = Cookies.get("token");
-
   const getAllUser = async () => {
     try {
       const response = await axios.get(
@@ -58,7 +57,7 @@ export default function Pesan() {
         savedChat: { _id: chats },
       } = result;
       await Cookies.set("chatId", chats);
-      await route.push("/in-chat-user");
+      await route.push("/pesan-list");
     } catch (error) {
       console.log(error);
     }
@@ -116,10 +115,6 @@ export default function Pesan() {
                 Akun
               </Link>
             </div>
-            {/* <div className=" absolute bottom-8 text-slate-500 flex gap-1 text-sm">
-          <p>&copy; copyright 2023</p>
-          <p>Djamet coder</p>
-        </div> */}
           </div>
         )}
         <div>

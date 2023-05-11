@@ -47,7 +47,6 @@ const newChat = async (req, res) => {
 const getMyChat = async (req, res) => {
   try {
     const chat = await Chat.find({ createdBy: req.user.userId })
-      .populate("createdBy")
       .populate("participants.username1")
       .populate("message.sender");
     return res.status(200).json({ chat });

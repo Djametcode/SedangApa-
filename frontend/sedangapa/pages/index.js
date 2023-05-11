@@ -31,6 +31,7 @@ export default function Home() {
       console.log(user);
       await Cookies.set("id", user._id);
       await Cookies.set("token", token);
+      await Cookies.set("username", user.username);
       await setWarning(msg);
       await toggleText(true);
       route.push("/landing");
@@ -42,24 +43,28 @@ export default function Home() {
     <div className=" font-quick h-screen w-screen flex flex-col justify-center bg-slate-200">
       <div className=" flex justify-center">
         <form
-          className=" w-[400px] h-[400px] rounded-xl shadow-lg bg-slate-200 flex flex-col gap-2 justify-center pl-20 pr-20"
+          className=" max-sm:w-80 max-sm:h-72 w-[400px] h-[400px] rounded-xl shadow-lg max-sm:shadow-md bg-slate-200 flex flex-col gap-2 justify-center pl-20 pr-20"
           action="#"
         >
           <div className=" -translate-y-9 flex justify-center text-2xl font-extrabold">
             <h1>Login</h1>
           </div>
-          <input
-            className=" text-sm p-2 rounded-xl focus:outline-none"
-            type="text"
-            placeholder="Email"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            className=" text-sm p-2 rounded-xl focus:outline-none"
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <div className=" flex justify-center">
+            <div className=" flex flex-col gap-2">
+              <input
+                className=" max-sm:w-56 text-sm p-2 rounded-xl focus:outline-none"
+                type="text"
+                placeholder="Email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <input
+                type="password"
+                placeholder="Password"
+                className=" max-sm:w-56 text-sm p-2 rounded-xl focus:outline-none"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+          </div>
           <div>
             {text && (
               <p className=" text-center text-sm text-green-500">
@@ -76,7 +81,7 @@ export default function Home() {
             </button>
           </div>
           <div className=" text-center text-xs flex justify-center gap-2">
-            <p>Bekum punya akun? </p>
+            <p className=" max-sm:hidden">Bekum punya akun? </p>
             <Link href="/regist">Buat akun disini</Link>
           </div>
         </form>

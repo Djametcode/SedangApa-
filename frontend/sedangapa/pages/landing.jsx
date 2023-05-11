@@ -3,6 +3,7 @@ import { data } from "autoprefixer";
 import axios from "axios";
 import Cookies from "js-cookie";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 const Extends = ({ data }) => {
@@ -35,7 +36,7 @@ const Posts = ({ data }) => {
 export default function Landing() {
   const [text, setText] = useState();
   const [post, setPost] = useState([]);
-
+  const route = useRouter();
   const getAllPost = async () => {
     try {
       const response = await axios.get(
@@ -50,14 +51,17 @@ export default function Landing() {
     }
   };
 
-  useEffect(() => {
-    getAllPost();
-  }, []);
-
   const data = {
     text: text,
   };
   const token = Cookies.get("token");
+
+  useEffect(() => {
+    if (!token) {
+      route.push("/");
+    }
+    getAllPost();
+  }, []);
 
   const postSomething = async () => {
     event.preventDefault();
@@ -129,10 +133,19 @@ export default function Landing() {
               Akun
             </Link>
           </div>
-          {/* <div className=" absolute bottom-8 text-slate-500 flex gap-1 text-sm">
-          <p>&copy; copyright 2023</p>
-          <p>Djamet coder</p>
-        </div> */}
+          <div
+            onClick={async () => {
+              await Cookies.remove("username");
+              await Cookies.remove("token");
+              await Cookies.remove("id");
+              await route.push("/");
+            }}
+            className=" cursor-pointer absolute bottom-4 left-4"
+          >
+            <p className=" bg-slate-300 p-2 rounded-xl shadow-md text-black">
+              Log Out
+            </p>
+          </div>
         </div>
       )}
       <div className=" flex flex-col">
