@@ -192,7 +192,7 @@ export default function Landing() {
           </div>
         </div>
         <div className=" flex justify-center p-3 bg-slate-200">
-          <div className=" flex flex-col gap-5 m-5">
+          <div className=" flex flex-col gap-5 p-5">
             <Posts data={post} />
           </div>
         </div>
