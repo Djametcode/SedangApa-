@@ -128,7 +128,7 @@ export default function Landing() {
             </Link>
             <Link
               className=" p-3 bg-slate-200 rounded-lg shadow-lg"
-              href="/landing"
+              href="/akun"
             >
               Akun
             </Link>

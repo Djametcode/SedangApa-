@@ -115,6 +115,19 @@ export default function Pesan() {
                 Akun
               </Link>
             </div>
+            <div
+              onClick={async () => {
+                await Cookies.remove("username");
+                await Cookies.remove("token");
+                await Cookies.remove("id");
+                await route.push("/");
+              }}
+              className=" cursor-pointer absolute bottom-4 left-4"
+            >
+              <p className=" bg-slate-300 p-2 rounded-xl shadow-md text-black">
+                Log Out
+              </p>
+            </div>
           </div>
         )}
         <div>
