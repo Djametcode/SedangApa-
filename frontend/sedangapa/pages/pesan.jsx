@@ -13,7 +13,7 @@ export default function Pesan() {
   const getAllUser = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3000/api/v9/sedang-apa/get-all-user"
+        "https://copper-camel-kilt.cyclic.app/api/v9/sedang-apa/get-all-user"
       );
       const result = await response.data;
       const { formatUser } = result;
@@ -42,7 +42,7 @@ export default function Pesan() {
   const startChat = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/v9/sedang-apa/profile/create-chat",
+        "https://copper-camel-kilt.cyclic.app/api/v9/sedang-apa/profile/create-chat",
         data,
         {
           headers: {

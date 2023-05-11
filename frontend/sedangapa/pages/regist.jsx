@@ -21,7 +21,7 @@ export default function Regist() {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/v9/sedang-apa/regist",
+        "https://copper-camel-kilt.cyclic.app/api/v9/sedang-apa/regist",
         formData
       );
       const result = await response.data;

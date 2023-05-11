@@ -11,7 +11,7 @@ export default function InChat() {
   const getMyChat = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3000/api/v9/sedang-apa/profile/get-my-chat",
+        "https://copper-camel-kilt.cyclic.app/api/v9/sedang-apa/profile/get-my-chat",
         {
           headers: {
             Authorization: `Bearer ${Cookies.get("token")}`,

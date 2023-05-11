@@ -23,7 +23,7 @@ export default function Home() {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/v9/sedang-apa/login",
+        "https://copper-camel-kilt.cyclic.app/api/v9/sedang-apa/login",
         loginData
       );
       const result = await response.data;

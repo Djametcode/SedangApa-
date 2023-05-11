@@ -20,7 +20,7 @@ export default function Akun() {
   const getAccountDetail = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/v9/sedang-apa/profile/get-user/${accId}`,
+        `https://copper-camel-kilt.cyclic.app/api/v9/sedang-apa/profile/get-user/${accId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

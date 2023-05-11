@@ -7,7 +7,7 @@ export default function MulaiChat() {
   const getAllUser = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3000/api/v9/sedang-apa/get-all-user"
+        "hhttps://copper-camel-kilt.cyclic.app/api/v9/sedang-apa/get-all-user"
       );
       const result = await response.data;
       const { formatUser } = result;

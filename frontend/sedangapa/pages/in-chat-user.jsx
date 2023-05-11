@@ -49,7 +49,7 @@ export default function InChat() {
     event.preventDefault();
     try {
       const response = await axios.post(
-        `http://localhost:3000/api/v9/sedang-apa/profile/send-chat/${chatId}`,
+        `https://copper-camel-kilt.cyclic.app/api/v9/sedang-apa/profile/send-chat/${chatId}`,
         data,
         {
           headers: {
