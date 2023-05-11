@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 const Extends = ({ data }) => {
   const { text, createdBy } = data;
   return (
-    <div className=" max-sm:h-72 max-sm:w-96 p-5 max-sm:m-7 h-[300px] w-[500px] bg-slate-100 shadow-xl rounded-xl">
+    <div className=" max-sm:h-72 max-sm:w-96 p-5 h-[300px] w-[500px] bg-slate-100 shadow-xl rounded-xl">
       <div className=" flex gap-4 border-b pb-2">
         <div>
           <img
@@ -192,7 +192,7 @@ export default function Landing() {
           </div>
         </div>
         <div className=" flex justify-center p-3 bg-slate-200">
-          <div className=" flex flex-col gap-2">
+          <div className=" flex flex-col gap-5 m-5">
             <Posts data={post} />
           </div>
         </div>
