@@ -1,4 +1,5 @@
 import axios from "axios";
+import Cookies from "js-cookie";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
@@ -13,26 +14,6 @@ export default function Layout({ children }) {
   const [setting, setSetting] = useState("");
   const [textSetting, setTxtSetting] = useState("");
   const router = useRouter();
-  // const [id, setId] = useState();
-  // const [token, setToken] = useState();
-
-  // const getUserDetail = async (req, res) => {
-  //   const config = {
-  //     headers: {
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //   };
-  //   try {
-  //     const response = await axios.get(
-  //       `http://localhost:3000/api/v9/sedang-apa/profile/get-user/${id}`,
-  //       config
-  //     );
-  //     const result = await response.data;
-  //     console.log(result);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
 
   useEffect(() => {
     if (router.pathname === "/pesan") {
@@ -49,13 +30,16 @@ export default function Layout({ children }) {
     }
   });
   const logOutHandle = () => {
-    localStorage.clear();
+    Cookies.remove("token");
+    Cookies.remove("id");
+    Cookies.remove("chatId");
     router.push("/");
   };
+  const [nav, toggleNav] = useState(false);
   return (
-    <div className=" bg-slate-200 max-h-full w-screen font-quick">
-      <div className="  fixed left-0 w-72 flex flex-col justify-center text-xl font-extrabold">
-        <div className=" flex gap-2 h-24 bg-lime-500">
+    <div className="font-quick flex max-sm:block">
+      <div className=" flex flex-col fixed max-sm:hidden left-0 z-20">
+        <div className=" flex pl-6 gap-1 w-72 h-24 bg-lime-500">
           <div className=" flex flex-col justify-center">
             <h1 className=" pl-5 text-white text-2xl">SedangApa</h1>
           </div>
@@ -76,8 +60,8 @@ export default function Layout({ children }) {
             </svg>
           </div>
         </div>
-        <div className=" flex w-screen h-screen">
-          <div className=" bg-slate-100 w-72 flex flex-col gap-2 pb-6 p-10 pt-6 text-base">
+        <div className="">
+          <div className=" bg-slate-100 h-screen w-72 flex flex-col gap-2 pb-6 p-10 pt-6 text-base">
             <div className=" flex justify-start">
               <div className="  flex flex-col gap-5">
                 <div
@@ -190,7 +174,7 @@ export default function Layout({ children }) {
                     <Link href="/">Pengaturan</Link>
                   </div>
                 </div>
-                <div className=" flex absolute bottom-40 flex-col bg-slate-300 rounded-xl justify-center p-3 w-44 h-16">
+                {/* <div className=" flex absolute bottom-40 flex-col bg-slate-300 rounded-xl justify-center p-3 w-44 h-16">
                   <div className=" flex justify-start gap-1">
                     <div className=" flex flex-col justify-center">
                       <svg
@@ -220,13 +204,13 @@ export default function Layout({ children }) {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className=" pl-72 flex justify-center">{children}</div>
+      <div>{children}</div>
     </div>
   );
 }
