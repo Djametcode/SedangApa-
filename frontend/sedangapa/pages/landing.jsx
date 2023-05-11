@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 const Extends = ({ data }) => {
   const { text, createdBy } = data;
   return (
-    <div className=" max-sm:h-72 max-sm:w-96 p-5 h-[300px] w-[500px] bg-slate-100 shadow-xl rounded-xl">
+    <div className=" max-sm:h-72 max-sm:w-96 p-5 max-sm:p-7 h-[300px] w-[500px] bg-slate-100 shadow-xl rounded-xl">
       <div className=" flex gap-4 border-b pb-2">
         <div>
           <img
