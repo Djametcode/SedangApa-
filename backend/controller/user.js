@@ -25,14 +25,12 @@ const login = async (req, res) => {
     }
 
     const user = await User.findOne({ email: email });
-
-    const isMatch = await user.comparePass(password);
-    console.log(isMatch);
+    const isCorrect = await user.comparePass(password);
 
     if (!user) {
       return res.status(404).json({ msg: "User not found" });
     }
-    if (!isMatch) {
+    if (!isCorrect) {
       return res.status(401).json({ msg: "Password Wrong" });
     }
 

@@ -40,7 +40,7 @@ export default function Landing() {
   const getAllPost = async () => {
     try {
       const response = await axios.get(
-        "https://copper-camel-kilt.cyclic.app/api/v9/sedang-apa/get-all-post"
+        "http://localhost:3000/api/v9/sedang-apa/get-all-post"
       );
       const result = await response.data;
       console.log(result);
@@ -67,7 +67,7 @@ export default function Landing() {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "https://copper-camel-kilt.cyclic.app/api/v9/sedang-apa/profile/create-post",
+        "http://localhost:3000/api/v9/sedang-apa/profile/create-post",
         data,
         {
           headers: {
